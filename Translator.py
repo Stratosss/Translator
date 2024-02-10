@@ -19,7 +19,6 @@ if Q==1:
             x = my_file.read()
             translator = Translator(to_lang="el")
             translation = translator.translate(x)                      #translate a text
-        # translation = translator.translate("This is a pen.")     #translate a sentence
             print(translation)
     except FileNotFoundError as err:
         print("File not found in that directory:", err)
@@ -30,8 +29,6 @@ else:
             to_translate = x
             translated = GoogleTranslator(source='auto', target='el').translate(to_translate)
             print(translated)
-            # with open("test2.txt",'w') as my_file2:       #to create a new file with the translation
-            #      my_file2.write(translated)
     except FileNotFoundError as err:
         print("File not found in that directory:", err)
 
