@@ -1,4 +1,3 @@
-# Offline Translator
 from translate import Translator
 from deep_translator import GoogleTranslator
 import tkinter.filedialog as fd
@@ -34,7 +33,7 @@ while True:
     except Exception:
         continue
 
-if Q==1:
+if Q==1:            # Offline Translator
     try:
         root = tk.Tk()
         root.withdraw()
@@ -49,7 +48,7 @@ if Q==1:
     except AttributeError:
         print("No file was selected. App will now terminate.")
 else:
-    try:
+    try:                # Google Translator
         root = tk.Tk()
         root.withdraw()
         root.wm_attributes('-topmost', 1)
