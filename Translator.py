@@ -45,7 +45,6 @@ if Q==1:            # Offline Translator
         # translation = translator.translate("This is a pen.")     #translate a sentence
         print(translation)
         save_function()
-        my_file.close()
     except AttributeError:
         print("No file was selected. App will now terminate.")
 else:
@@ -59,7 +58,6 @@ else:
         translation= GoogleTranslator(source='auto', target='el').translate(to_translate)
         print(translation)
         save_function()
-        my_file.close()
     except AttributeError:
         print("No file was selected. App will now terminate.")
    
