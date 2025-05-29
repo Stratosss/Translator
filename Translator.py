@@ -46,7 +46,7 @@ def input_validation(Q):
          
     
 while True:
-    Q=input('Which method do you wish to use? (type 1 for Offline Translator, 2 for Online Translator or Q to exit): ')
+    Q=input('Please select an option (type 1 for Offline Translator, 2 for Online Translator or Q to exit): ')
     
     if Q.upper() == "Q":
         sys.exit()
