@@ -3,6 +3,7 @@ from deep_translator import GoogleTranslator
 from deep_translator.exceptions import LanguageNotSupportedException
 import tkinter.filedialog as fd
 import tkinter as tk
+import sys
 
 VALID_LANGUAGE_CODES = {
     'en', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'ru', 'zh', 'ja', 'ko',
@@ -29,7 +30,7 @@ def save_function():
             elif query.upper() == "N":
                 break
             else:
-                print("Please time Y or N to continue...")
+                print("Please type Y or N to continue...")
 
 def input_validation(Q):
     while True:
@@ -45,22 +46,25 @@ def input_validation(Q):
          
     
 while True:
-    Q=input('Which method do you wish to use? (type 1 for Offline Translator or 2 for Online Translator): ')
+    Q=input('Which method do you wish to use? (type 1 for Offline Translator, 2 for Online Translator or Q to exit): ')
+    
+    if Q.upper() == "Q":
+        sys.exit()
+    
     try:
-        Q=int(Q)
-        if Q == 1: 
-            from_lang, to_lang = input_validation(Q)
+        Q_int = int(Q)
+        if Q_int == 1: 
+            from_lang, to_lang = input_validation(Q_int)
             break
-        elif Q == 2:
-            to_lang = input_validation(Q)
+        elif Q_int == 2:
+            to_lang = input_validation(Q_int)
             break
         else:
             print("Please give the right value")
-    except Exception as e:
-        print(e)
-        continue
+    except ValueError as e:
+            print("Please give the right value")
 
-if Q==1:                #Offline Translator
+if Q_int==1:                #Offline Translator
     while True:
         try:
             root = tk.Tk()
@@ -79,10 +83,10 @@ if Q==1:                #Offline Translator
             save_function()
             break
         except AttributeError as e:
-            print("No file was selected. The app will now terminate.")
+            print("No file was selected for translation or save action was cancelled. The app will now terminate.")
             print(e)
             break
-else:
+elif Q_int==2:
     while True:
         try:                #Google Translator
             root = tk.Tk()
@@ -97,13 +101,9 @@ else:
             save_function()
             break
         except AttributeError:
-            print("No file was selected. The app will now terminate.")
+            print("No file was selected for translation or save action was cancelled. The app will now terminate.")
             break
         except LanguageNotSupportedException  as e:
             print(e)
             to_lang = input_validation(2)
             continue
-    
-
-    
-
