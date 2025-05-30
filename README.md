@@ -9,6 +9,6 @@ This application utilises two libraries from Pypi in order to deliver results, n
 
 ## Notes
 - The application uses a set of standard language codes for the offline translator (no details are given from the developer of the library as to which languages they use apart from ISO 639-1).
-- The application counts the characters and gives a warning when the offline translator is selected (there's a character limit of 500 characters).
+- The application counts the characters and gives a warning when the offline translator is selected (there's a character limit of 500 characters) or if a file is empty.
 - The application utilises the internal Error "LanguageNotSupportedException" of the google library to display the available languages.
 - For both options, error handling is implemented to loop back to the beginning, allowing the user to retry.
