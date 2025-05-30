@@ -77,6 +77,9 @@ if Q_int==1:                #Offline Translator
                     if len(x)>500:
                         print(f"offline translator has a limit of up to 500 characters, current character number: {len(x)} \nThe app will now terminate.")
                         break
+                    elif len(x)==0:
+                        print("file is empty. Please try again with another file.")
+                        break
             translator = Translator(to_lang=f"{to_lang}", from_lang=f"{from_lang}")
             translation = translator.translate(x)                      #translate a text
             print(translation)
@@ -96,6 +99,9 @@ elif Q_int==2:
             if file_path:
                 with open(file_path, 'r', encoding='utf-8') as my_file:
                     x = my_file.read()
+                    if len(x)==0:
+                        print("file is empty. Please try again with another file.")
+                        break
             translation= GoogleTranslator(source='auto', target=f"{to_lang}").translate(x)
             print(translation)
             save_function()
@@ -103,7 +109,8 @@ elif Q_int==2:
         except AttributeError:
             print("No file was selected for translation or save action was cancelled. The app will now terminate.")
             break
-        except LanguageNotSupportedException  as e:
+        except LanguageNotSupportedException as e:
             print(e)
             to_lang = input_validation(2)
             continue
+    
