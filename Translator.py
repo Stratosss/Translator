@@ -85,7 +85,7 @@ if Q_int==1:                #Offline Translator
             print(translation)
             save_function()
             break
-        except AttributeError as e:
+        except (AttributeError, NameError) as e:
             print("No file was selected for translation or save action was cancelled. The app will now terminate.")
             print(e)
             break
@@ -106,7 +106,7 @@ elif Q_int==2:
             print(translation)
             save_function()
             break
-        except AttributeError:
+        except (AttributeError, NameError):
             print("No file was selected for translation or save action was cancelled. The app will now terminate.")
             break
         except LanguageNotSupportedException as e:
